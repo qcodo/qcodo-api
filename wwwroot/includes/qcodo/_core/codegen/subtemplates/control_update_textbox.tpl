@@ -1,0 +1,1 @@
+			$this-><%= $strObjectName %>-><%= $objColumn->PropertyName %> = $this-><%= $strControlId %>->Text;

@@ -1,0 +1,41 @@
+#!/usr/local/bin/php
+<?php
+	// Call the CLI prepend.inc.php
+	require('cli_prepend.inc.php');
+
+	function PrintInstructions() {
+		print('Qcodo Build/Release Maker - ' . QCODO_VERSION . '
+Copyright (c) 2001 - 2006, QuasIdea Development, LLC
+This program is free software with ABSOLUTELY NO WARRANTY; you may
+redistribute it under the terms of The MIT License.
+
+Usage:    make_build.cli MAJOR_VERSION MINOR_VERSION BUILD_NUMBER TYPE
+Example:  make_build.cli 0 2 23 stable
+          make_build.cli 0 2 24 development
+
+For more information, please go to www.qcodo.com
+');
+		exit();
+	}
+
+	if ($_SERVER['argc'] != 5)
+		PrintInstructions();
+	$intMajor = $_SERVER['argv'][1];
+	$intMinor = $_SERVER['argv'][2];
+	$intBuild = $_SERVER['argv'][3];
+	$strType = $_SERVER['argv'][4];
+
+	if (!is_numeric($intMajor) ||
+		!is_numeric($intMinor) ||
+		!is_numeric($intBuild))
+		PrintInstructions();
+
+	if (strtolower($strType) == 'stable')
+		$blnStable = true;
+	else if (strtolower($strType) == 'development')
+		$blnStable = false;
+	else
+		PrintInstructions();
+
+	$objBuild = new QBuildMaker($intMajor, $intMinor, $intBuild, $blnStable);
+?>

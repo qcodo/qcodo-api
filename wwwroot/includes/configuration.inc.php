@@ -1,0 +1,188 @@
+<?php
+	// The Server Instance constant is used to help ease web applications with multiple environments.
+	// Feel free to use, change or ignore.
+	define('SERVER_INSTANCE', 'dev');
+
+	switch (SERVER_INSTANCE) {
+		case 'dev':
+			define ('__DOCROOT__', '/home/qcodo-api/wwwroot');
+			break;
+		case 'test':
+		case 'stage':
+		case 'prod':
+			define ('__DOCROOT__', '/home/www/qcodo.release/wwwroot');
+			break;
+	}
+
+	/* Constant to allow/disallow remote access to the admin pages
+	 * e.g. the generated form_drafts, codegen, or any other script that calls QApplication::CheckRemoteAdmin()
+	 *
+	 * If set to TRUE, anyone can access those pages.
+	 * If set to FALSE, only localhost can access those pages.
+	 * If set to an IP address (e.g. "12.34.56.78"), then only localhost and 12.34.56.78 can access those pages.
+	 * If set to a comma-separate list of IP addresses, then localhoost and any of those IP addresses can access those pages.
+	 *
+	 * Of course, you can also feel free to remove QApplication::CheckRemoteAdmin() call on any of these pages,
+	 * which will completely ignore ALLOW_REMOTE_ADMIN altogether.
+	 */
+	define('ALLOW_REMOTE_ADMIN', true);
+
+
+
+	/* Constants for Document Root (and Virtual Directories / Subfoldering)
+	 * 
+	 * IMPORTANT NOTE FOR WINDOWS USERS
+	 * Please note that all paths should use standard "forward" slashes instead of "backslashes".
+	 * So windows paths would look like "c:/wwwroot" instead of "c:\wwwroot".
+	 * 
+	 * Please specify the "Document Root" here.  This is the top level filepath for your web application.
+	 * If you are on a installation that uses virtual directories, then you must specify that here, as well.
+	 *
+	 * For example, if your example web application where http://my.domain.com/index.php points to
+	 * /home/web/htdocs/index.php, then you must specify:
+	 *		__DOCROOT__ is defined as '/home/web/htdocs'
+	 *		(note the leading slash and no ending slash)
+	 * On Windows, if you have http://my.domain.com/index.php pointing to c:\webroot\files\index.php, then:
+	 *		__DOCROOT__ is defined as 'c:/webroot/files'
+	 *		(again, note the leading c:/ and no ending slash)
+	 *
+	 * Next, if you are using Virtual Directories, where http://not.my.domain.com/~my_user/index.php
+	 * (for example) points to /home/my_user/public_html/index.php, then:
+	 *		__DOCROOT__ is defined as '/home/my_user/public_html'
+	 *		__VIRTUAL_DIRECTORY__ is defined as '/~my_user'
+	 *
+	 * Finally, if you have installed Qcodo within a SubDirectory of the Document Root, so for example
+	 * the Qcodo "index.php" page is accessible at http://my.domain.com/frameworks/qcodo/index.php, then:
+	 *		__SUBDIRECTORY__ is defined as '/frameworks/qcodo'
+	 *		(again, note the leading and no ending slash)
+	 *
+	 * In combination with Virtual Directories, if you (for example) have the Qcodo "index.php" page
+	 * accessible at http://not.my.domain.com/~my_user/qcodo/index.php, and the index.php resides at
+	 * c:\users\my_user\public_html\index.php, then:
+	 *		__DOCROOT__ is defined as 'c:/users/my_user/public_html'
+	 *		__VIRTUAL_DIRECTORY__ is defined as '/~my_user'
+	 *		__SUBDIRECTORY__ is defined as '/qcodo'
+	 */
+	define ('__VIRTUAL_DIRECTORY__', '');
+	define ('__SUBDIRECTORY__', '');
+
+
+
+	// Constant for the DevTools (Command Line Interface) Directory
+	// (We're assuming it's at one level above __DOCROOT__... but feel free to specify any absolute path
+	define ('__DEVTOOLS_CLI__', __DOCROOT__ . __SUBDIRECTORY__ . '/../_devtools_cli');
+
+
+
+	/* Absolute File Paths for Internal Directories
+	 *
+	 * Please specify the absolute file path for all the following directories in your Qcodo-based web
+	 * application.
+	 *
+	 * Note that all paths must start with a slash or 'x:\' (for windows users) and must have
+	 * no ending slashes.  (We take advantage of the __DOCROOT__ constant defined above and the
+	 * __INCLUDES__ constant defined below to help simplify this section. But note that this is NOT
+	 * required.  These directories can also reside outside of the Document Root altogether.
+	 * So feel free to use or not use the __DOCROOT__ and __INCLUDES__ constants as you wish/need
+	 * in defining your other directory constants.)
+	 */
+
+	// General Includes (the location of the Prepend and Configuration includes files, and the Manifest XML)
+	define ('__INCLUDES__', __DOCROOT__ .  __SUBDIRECTORY__ . '/includes');
+
+	// The Qcodo Directories
+	// Includes subdirectories for Qcodo Customizations in CodeGen and QForms, i18n PO files, QCache storage, etc.
+	// Also includes the _core subdirectory for the QCodo Core
+	define ('__QCODO__', __INCLUDES__ . '/qcodo');
+
+	// The Qcodo Core
+	define ('__QCODO_CORE__', __INCLUDES__ . '/qcodo/_core');
+
+	// Destination for Code Generated class files
+	define ('__DATA_CLASSES__', __INCLUDES__ . '/data_classes');
+	define ('__DATAGEN_CLASSES__', __INCLUDES__ . '/data_classes/generated');
+	define ('__FORMBASE_CLASSES__', __INCLUDES__ . '/formbase_classes_generated');
+	define ('__PANELBASE_CLASSES__', __INCLUDES__ . '/panelbase_classes_generated');
+
+
+
+	/* Relative File Paths for Web Accessible Directories
+	 *
+	 * Please specify the file path RELATIVE FROM THE DOCROOT for all the following web-accessible directories
+	 * in your Qcodo-based web application.
+	 *
+	 * For some directories (e.g. the Examples site), if you are no longer using it, you STILL need to 
+	 * have the constant defined.  But feel free to define the directory constant as blank (e.g. '') or null.
+	 *
+	 * Note that constants must have a leading slash and no ending slash, and they MUST reside within
+	 * the Document Root.
+	 * 
+	 * (We take advantage of the __SUBDIRECTORY__ constant defined above to help simplify this section.
+	 * Note that this is NOT required.  Feel free to use or ignore.)
+	 */
+
+	// Location of the Qcodo-specific web-based development tools, like codegen.php
+	define ('__DEVTOOLS__', __SUBDIRECTORY__ . '/_devtools.mh');
+
+	// Destination for generated form drafts and panel drafts
+	define ('__FORM_DRAFTS__', __SUBDIRECTORY__ . '/form_drafts.mh');
+	define ('__PANEL_DRAFTS__', __SUBDIRECTORY__ . '/panel_drafts.mh');
+
+	// Location of the Examples site
+	define ('__EXAMPLES__', null);
+
+	// Location of Qcodo-specific Web Assets (JavaScripts, CSS, Images, and PHP Pages/Popups)
+	define ('__JS_ASSETS__', __SUBDIRECTORY__ . '/assets/js');
+	define ('__CSS_ASSETS__', __SUBDIRECTORY__ . '/assets/css');
+	define ('__IMAGE_ASSETS__', __SUBDIRECTORY__ . '/assets/images');
+	define ('__PHP_ASSETS__', __SUBDIRECTORY__ . '/assets/php');
+
+
+
+	/* Database Connection SerialArrays
+	 *
+	 * Note that all Database Connections are defined as constant serialized arrays.  Qcodo supports
+	 * connections to an unlimited number of different database sources.  Each database source, referenced by
+	 * a numeric index, will have its DB Connection SerialArray stored in a DB_CONNECTION_# constant
+	 * (where # is the numeric index).
+	 *
+	 * The SerialArray can have the following keys:
+	 * "adapter" (Required), options are:
+	 *		MySql (MySQL v4.x, using the old mysql extension)
+	 *		MySqli (MySQL v4.x, using the new mysqli extension)
+	 *		MySqli5 (MySQL v5.x, using the new mysqli extension)
+	 *		SqlServer (Microsoft SQL Server)
+	 *		PostgreSql (PostgreSQL)
+	 * "server" (Required) is the db server's name or IP address, e.g. localhost, 10.1.1.5, etc.
+	 * "port" is the port number - default is the server-specified default
+	 * "database", "username", "password" should be self explanatory
+	 * "profiling" is true or false, defining whether or not you want to enable DB profiling - default is false
+	 *		NOTE: Profiling should only be enabled when you are actively wanting to profile a
+	 *		specific PHP script or scripts.  Because of SIGNIFICANT performance degradation,
+	 *		it should otherwise always be OFF.
+	 * "ScriptPath": you can have CodeGen virtually add additional FKs, even though they are
+	 * 		not defined as a DB constraint in the database, by using a script to define what
+	 * 		those constraints are.  The path of the script can be defined here. - default is blank or none
+	 * Note: any option not used or set to blank will result in using the default value for that option
+	 */
+	define('DB_CONNECTION_1', serialize(array(
+		'adapter' => 'MySqli',
+		'server' => 'db.qcodo.com',
+		'port' => null,
+		'database' => 'qcodo_api',
+		'username' => 'root',
+		'password' => '',
+		'profiling' => false)));
+	define('DB_CONNECTION_2', serialize(array('adapter'=>'MySqli', 'server'=>'db.qcodo.com', 'port'=>null, 'database'=>'qcodo_website', 'username'=>'root', 'password'=>'', 'profiling'=>false)));
+
+
+
+	// (For PHP > v5.1) Setup the default timezone (if not already specified in php.ini)
+	if ((function_exists('date_default_timezone_set')) && (!ini_get('date.timezone')))
+		date_default_timezone_set('US/Pacific');
+
+
+
+	// Define the Filepath for the error page (path MUST be relative from the DOCROOT)
+	define('ERROR_PAGE_PATH', __PHP_ASSETS__ . '/_core/error_page.php');
+?>

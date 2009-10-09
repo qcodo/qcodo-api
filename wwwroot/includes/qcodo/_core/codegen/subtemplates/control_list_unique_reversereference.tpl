@@ -1,0 +1,1 @@
+			$this->col<%= $objReverseReference->ObjectPropertyName %> = new QDataGridColumn(QApplication::Translate('<%= QConvertNotation::WordsFromCamelCase($objReverseReference->ObjectPropertyName) %>'), '<?= <%= $strParent %>->dtg<%= $objTable->ClassName %>_<%= $objReverseReference->ObjectPropertyName %>_Render($_ITEM); ?>');

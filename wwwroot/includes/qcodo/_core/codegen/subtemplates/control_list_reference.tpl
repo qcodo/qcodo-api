@@ -1,0 +1,1 @@
+			$this->col<%= $objColumn->PropertyName %> = new QDataGridColumn(QApplication::Translate('<%= QConvertNotation::WordsFromCamelCase($objColumn->PropertyName) %>'), '<?= <%= $strParent %>->dtg<%= $objTable->ClassName %>_<%= $objColumn->Reference->PropertyName %>_Render($_ITEM); ?>');

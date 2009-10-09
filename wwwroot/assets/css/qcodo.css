@@ -1,0 +1,33 @@
+	.top_nav {position:relative; background: url(/images/header.png) no-repeat; width: 960px; height: 80px;}
+	.top_nav_icon {position:absolute; width:106px; height:45px; top:1px;}
+	.top_nav_qcodo {position: absolute; top: 1px; left: 1px; width: 214px; height: 78px;}
+	.top_nav_icon_highlight {position:absolute; width:106px; height:45px; top:1px; filter: alpha(opacity=30); opacity: 0.33; background-color: #333399; display: none;}
+
+	.top_member_nav {
+		font: 10px 'Verdana' 'Arial' 'Helvetica' 'Sans-Serif';
+		color: #000099;
+		position: absolute; top: 51px; left: 753px; text-align: right; width: 200px;
+	}
+
+	.top_member_nav_link {
+		color: #000099;
+		text-decoration: none;
+	}
+	
+	.top_member_nav_link:hover {
+		text-decoration: underline;
+	}
+
+	.top_member_nav_link_selected {
+		font-weight: bold;
+		color: #408050;
+	}
+	
+
+	.top_ad { font-size: 10px; font-family: verdana, arial, helvetica; width: 20%; height: 20px; vertical-align: middle; background-color: #999999; color: white; text-align: center; font-weight: bold; border-width: 0px 0px 0px 1px; border-color: white; border-style: solid; cursor: pointer;}
+	.top_ad_left { border-width: 0px 0px 0px 0px; }
+	.top_ad_link { color: white; text-decoration: none; }
+	.top_ad_link:hover {text-decoration: none;}
+	.top_ad_highlight {background-color: #8888dd; }
+
+	.headingLeftGray { color: #60b080; }

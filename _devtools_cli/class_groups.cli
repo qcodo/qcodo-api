@@ -1,0 +1,81 @@
+#!/usr/local/bin/php
+<?php
+	// Call the CLI prepend.inc.php
+	require('cli_prepend.inc.php');
+
+	define('GROUP_FRAMEWORK', 2);
+	define('GROUP_CODEGEN', 3);
+	define('GROUP_QFORM', 4);
+	define('GROUP_ACTIONS', 5);
+	define('GROUP_EVENTS', 6);
+	define('GROUP_ENUM', 7);
+	define('GROUP_DB', 8);
+	define('GROUP_QQUERY', 9);
+	define('GROUP_EMAIL_WS', 10);
+	define('GROUP_EXCEPTIONS', 11);
+	define('GROUP_I18N', 12);
+
+	define('VARGROUP_APPEARANCE', 2);
+	define('VARGROUP_BEHAVIOR', 3);
+	define('VARGROUP_INTERNAL', 4);
+	define('VARGROUP_LAYOUT', 5);
+	define('VARGROUP_MISC', 6);
+	define('VARGROUP_SETTINGS', 7);
+
+	foreach (QcodoClass::LoadAll() as $objClass) {
+		if ($objClass->Name != 'Exception') {
+			if (strpos($objClass->Name, 'Exception') !== false)
+				$objClass->ClassGroupId = GROUP_EXCEPTIONS;
+
+			if (strpos($objClass->File->Path, 'framework') !== false)
+				$objClass->ClassGroupId = GROUP_FRAMEWORK;
+			if (strpos($objClass->File->Path, 'database') !== false)
+				$objClass->ClassGroupId = GROUP_DB;
+			if (strpos($objClass->File->Path, 'qform') !== false) {
+				if (!$objClass->CountOperations() && !$objClass->CountClassVariables() && !$objClass->CountClassProperties()) {
+					$objClass->EnumerationFlag = true;
+					$objClass->ClassGroupId = GROUP_ENUM;
+				} else {
+					$objClass->EnumerationFlag = false;
+					$objClass->ClassGroupId = GROUP_QFORM;
+				}
+			}
+			if (strpos($objClass->File->Path, 'framework') !== false) {
+				if (strpos($objClass->Name, 'Exception') !== false)
+					$objClass->ClassGroupId = GROUP_EXCEPTIONS;
+				else
+					$objClass->ClassGroupId = GROUP_FRAMEWORK;
+			}
+			if (strpos($objClass->File->Path, 'QQuery') !== false)
+				$objClass->ClassGroupId = GROUP_QQUERY;
+			if (strpos($objClass->File->Path, 'event') !== false)
+				$objClass->ClassGroupId = GROUP_EVENTS;
+			if (strpos($objClass->File->Path, 'action') !== false)
+				$objClass->ClassGroupId = GROUP_ACTIONS;
+			if (strpos($objClass->Name, 'Database') !== false)
+				$objClass->ClassGroupId = GROUP_DB;
+			if (strpos($objClass->File->Path, 'codegen') !== false)
+				$objClass->ClassGroupId = GROUP_CODEGEN;
+			if (($objClass->Name == 'QErrorAttribute') ||
+				($objClass->Name == 'QApplication') ||
+				($objClass->Name == 'QCryptographyException'))
+				$objClass->ClassGroupId = GROUP_FRAMEWORK;
+			if (strpos($objClass->Name, 'Email') !== false)
+				$objClass->ClassGroupId = GROUP_EMAIL_WS;
+			if (strpos($objClass->Name, 'Rss') !== false)
+				$objClass->ClassGroupId = GROUP_EMAIL_WS;
+			if (strpos($objClass->Name, 'Soap') !== false)
+				$objClass->ClassGroupId = GROUP_EMAIL_WS;
+			if (strpos($objClass->Name, 'I18n') !== false)
+				$objClass->ClassGroupId = GROUP_I18N;
+			if (strpos($objClass->Name, 'PoParser') !== false)
+				$objClass->ClassGroupId = GROUP_I18N;
+
+			if ($objClass->Name == 'QBrowserType')
+				$objClass->EnumerationFlag = true;
+
+			$objClass->Save();
+		}
+	}
+?>
+Done.

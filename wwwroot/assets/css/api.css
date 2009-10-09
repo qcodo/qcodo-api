@@ -1,0 +1,103 @@
+	/* Overall Styles */
+	BODY {margin: 0px;}
+	.edit_link {font: 11px verdana, arial, helvetica; color: white; background-color: #7744aa; font-weight: bold; position: absolute; top: 22px; left: 700px; cursor: pointer; padding: 2px 8px 2px 8px; border-width: 1px; border-color: black; border-style: solid;}
+	.page {margin: 0px; background-color: white; position: absolute; top: 110px; bottom: 0px; left: 0px; right: 0px;}
+	.title {background-color: #660066; font: 12px verdana, arial, helvetica; font-weight: bold; top: 0px; left: 0px; right: 0px; position: absolute; padding: 5px; height: 15px; color: #ffffff;}
+	.subtitle {font: 14px verdana, arial, helvetica; font-weight: bold;}
+
+	/* Edit Screen */
+	.warning { color: #ff0000; }
+	.instructions { font: 9px 'Arial','Helvetica','Sans-Serif'; font-style: italic; }
+	.item_divider { line-height: 16px; }
+	.item_label { font: 12px 'Verdana','Arial','Helvetica','Sans-Serif'; padding-bottom: 4px; }
+	.item_label_disabled { font: 12px 'Verdana','Arial','Helvetica','Sans-Serif'; padding-bottom: 4px; color: #999999; }
+
+	.button { font: 10px 'Verdana','Arial','Helvetica','Sans-Serif'; font-weight: bold; }
+	.listbox { font: 12px 'Verdana','Arial','Helvetica','Sans-Serif'; width: 250px; }
+	.textbox { font: 12px 'Verdana','Arial','Helvetica','Sans-Serif'; width: 250px; }
+	.textbox_multiline {font: 11px 'Lucida Console' 'Courier New' 'Courier' 'monospaced'; width: 550px; height: 180px; border: 1px; border-style: solid; border-color: #222299; background-color: #eeeeff; padding: 3px; }
+
+	.body {font: 11px 'Verdana','Arial','Helvetica', 'Sans-Serif';}
+
+	.variable_control_head { background-color: #992299; color: #ffffff; font: 12px verdana, arial, helvetica; text-align: center; padding: 2px 7px 2px 1px; width: 670px; font-weight: bold;}
+	.variable_control { background-color: #ffeeff; padding: 6px 6px 6px 0px; width: 670px; height: 110px; border: 1px; border-style: solid; border-color: #992299; }
+	.vctl_cell { padding: 2px 8px 2px 8px; font: 10px verdana, arial, helvetica; vertical-align: top;}
+	.vctl {font-size: 10px; width: 150px; border-width: 1px; border-style: solid; border-color: black;}
+
+	.writebox_code { background-color: #ddddff; padding: 10px; margin-left: 20px; font-family: 'Lucida Console' 'Courier New' 'Courier' 'monospaced'; font-size: 11px; line-height: 13px; overflow: auto; width: auto;}
+
+	/* Main DocView Styles */
+	.doc {background-color: #ffffff; font: 12px verdana; bottom: 0px; left: 260px; right: 0px; top: 25px; position: absolute; padding: 0px;}
+
+	.class_info {background-color: #eeccff; padding: 10px; height: 65px;}
+	.class_name {font: 22px verdana, arial, helvetica; font-weight: bold;}
+	.class_group {font: 11px verdana, arial, helvetica; font-weight: bold; margin-bottom: -2px;}
+	.class_location {font: 10px arial, helvetica; margin-top: 2px;}
+
+	.class_content {padding: 10px; overflow: auto; position: absolute; top: 106px; bottom: 0px; left: 0px; right: 0px; border-width: 0px 1px 1px 1px; border-style: solid; border-color: #552288;}
+
+	.class_tabs {height: 20px; background-color: #eeccff; border-width: 0px 0px 1px 0px; border-style: solid; border-color: #552288;}
+
+	.class_tab {float: left; padding: 3px 8px 4px 8px; margin: 0px 12px 0px 12px; font: 11px verdana, arial, helvetica; font-weight: bold;}
+	.class_tab_selected {border-color: #552288; border-width: 1px; border-style: solid; background-color: white; padding-bottom: 3px; color: #330066; border-bottom-color: white; position: relative; cursor: pointer;}
+	.class_tab_enabled {background-color: #7744aa; color: #ffffff; cursor: pointer;}
+	.class_tab_disabled {background-color: #7744aa; color: #552288;}
+	.class_tab_hover {background-color: #ffffcc; color: #888822; cursor: pointer;}
+
+	/* Treenav Specific Styles */
+	.treenav {background-color: #eeeeee; width: 240px; position: absolute; top: 25px; bottom: 0px; left: 0px; overflow: auto; padding: 10px; float:left;}
+	.treenav_item {font: 10px verdana; padding: 0px 2px 2px 2px; cursor: pointer;}
+	.treenav_item_selected {background-color: #eeccff;}
+	.treenav_item_hover {background-color: #ffffcc;}
+
+	/* TAB SHEET STYLES: Method */
+	.class_methods_div {margin-left: 25px; width: 700px; margin: 0px 0px 4px 25px; padding: 1px 6px 1px 6px; font: 10px verdana, arial, helvetica; border-style: solid; border-width: 1px;}
+	.class_methods_name {font-size: 12px; font-weight: bold;}
+	.class_methods_public { background-color: #e0fae0; border-color: #66bb66; }
+	.class_methods_protected { background-color: #fafae0; border-color: #bbbb66;}
+	.class_methods_private { background-color: #fae0e0; border-color: #bb6666;}
+	.class_methods_magic { background-color: #e0e0e0; border-color: #666666;}
+
+	.class_methods_public_inherited { background: url(/images/inherited_public.png) no-repeat; background-color: #e0fae0; border-color: #66bb66; padding-top: 8px;}
+	.class_methods_protected_inherited { background: url(/images/inherited_protected.png) no-repeat; background-color: #fafae0; border-color: #bbbb66; padding-top: 8px;}
+	.class_methods_private_inherited { background: url(/images/inherited_private.png) no-repeat; background-color: #fae0e0; border-color: #bb6666; padding-top: 8px;}
+	.class_methods_magic_inherited { background: url(/images/inherited_magic.png) no-repeat; background-color: #e0e0e0; border-color: #666666; padding-top: 8px;}
+
+	.class_methods_public_overrides { background: url(/images/overrides.png) no-repeat; background-color: #e0fae0; border-color: #66bb66; padding-top: 8px;}
+	.class_methods_protected_overrides { background: url(/images/overrides.png) no-repeat; background-color: #fafae0; border-color: #bbbb66; padding-top: 8px;}
+	.class_methods_private_overrides { background: url(/images/overrides.png) no-repeat; background-color: #fae0e0; border-color: #bb6666; padding-top: 8px;}
+	.class_methods_magic_overrides { background: url(/images/overrides.png) no-repeat; background-color: #e0e0e0; border-color: #666666; padding-top: 8px;}
+
+	.class_methods_hover {background-color: #eee0fa; cursor: pointer; border-color: #9966bb;}
+	.class_methods_hover_inherited {background: url(/images/inherited_light.png) no-repeat; background-color: #eee0fa; cursor: pointer; border-color: #9966bb; padding-top: 8px;}
+	.class_methods_hover_overrides {background: url(/images/overrides.png) no-repeat; background-color: #eee0fa; cursor: pointer; border-color: #9966bb; padding-top: 8px;}
+
+	.class_methods_params {font: 10px verdana, arial, helvetica; color: #666666;}
+	.class_methods_detail {font: 10px arial, helvetica; margin-left: 25px;}
+	.class_methods_description {font: 11px verdana, arial, helvetica; margin-left: 25px; margin-top: 6px;}
+
+	.class_method_name {font: 20px verdana, arial, helvetica; color: #7744aa; font-weight: bold; margin: 12px 0px 12px 0px;}
+	.class_method_nameclass {font-size: 10px;}
+	.class_method_prototype {padding: 6px 20px 6px 20px; background-color: #eeeeee;}
+	.class_method_version {font: 11px arial, helvetica; color: #888888;}
+
+	.class_method_parameter_table { font: 11px verdana, arial, helvetica; border-width: 0px 0px 1px 0px; border-style: solid; border-color: #7744aa;}
+	.class_method_parameter_head {background-color: #7744aa; color: white; padding: 4px; font-weight: bold; vertical-align: top;}
+	.class_method_parameter_cellname {border-width: 1px 0px 0px 1px; border-style: solid; border-color: #7744aa; padding: 4px; vertical-align: top;}
+	.class_method_parameter_cellvalue {border-width: 1px 0px 0px 1px; border-style: solid; border-color: #7744aa; padding: 4px; vertical-align: top;}
+	.class_method_parameter_cellvalue_blank {background-color: #aaaaaa; }
+	.class_method_parameter_celldescription {border-width: 1px 1px 0px 1px; border-style: solid; border-color: #7744aa; padding: 4px; vertical-align: top;}
+
+	/* TAB SHEET STYLES: Property */
+	.class_property_table {margin-left: 25px;}
+	.class_property_name {width: 240px; padding: 2px 2px 2px 6px; font: 12px verdana, arial, helvetica; font-weight: bold; border-color: #7744aa; border-width: 0px 0px 1px 1px; border-style: solid; vertical-align: top;}
+	.class_property_type {width: 115px; padding: 2px; font: 10px verdana, arial, helvetica; border-color: #7744aa; border-width: 0px 0px 1px 1px; border-style: solid; vertical-align: top;}
+	.class_property_value {width: 150px;  padding: 2px; font: 10px verdana, arial, helvetica; border-color: #7744aa; border-width: 0px 0px 1px 1px; border-style: solid; vertical-align: top;}
+	.class_property_description {width: 200px; padding: 2px; font: 10px verdana, arial, helvetica; border-color: #7744aa; border-width: 0px 1px 1px 1px; border-style: solid; vertical-align: top;}
+	.class_property_header {background-color: #7744aa; color: white; padding: 2px; font-size: 12px; font-weight: bold; }
+	.class_property_subspan {font-size: 10px; font-weight: normal;}
+	.class_property_link {font-size: 10px; color: #7744aa; font-weight: bold;}
+	.class_property_variable_link {color: #bb99bb; font-weight: normal;}
+
+	.class_property_inherited {background: url(/images/inherited_light.png) no-repeat; padding-top: 8px;}
+	.class_property_overrides {background: url(/images/overrides.png) no-repeat; padding-top: 8px;}
