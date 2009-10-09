@@ -5,7 +5,7 @@
 
 	switch (SERVER_INSTANCE) {
 		case 'dev':
-			define ('__DOCROOT__', '/home/qcodo-api/wwwroot');
+			define ('__DOCROOT__', '/var/www/qcodo-api/wwwroot');
 			break;
 		case 'test':
 		case 'stage':

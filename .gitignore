@@ -3,3 +3,4 @@
 .cache
 .buildpath
 .DS_Store
+/wwwroot/includes/qcodo/cache/soap
