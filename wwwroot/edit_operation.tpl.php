@@ -4,7 +4,8 @@
 	</head>
 </html>
 	<?php $this->RenderBegin() ?>
-		<div class="title"><?php $this->lblName->Render(); ?> &nbsp;&nbsp;<span class="subtitle"><?php $this->lblClass->Render(); ?></span></div>
+		<div class="title"><div class="info"><?php $this->lblName->Render(); ?>
+		<div class="subtitle"><?php $this->lblClass->Render(); ?></div></div></div>
 
 		<br/><br/><br/><br/>
 		<?php $this->txtShortDescription->RenderWithName("CssClass=textbox_multiline"); ?>

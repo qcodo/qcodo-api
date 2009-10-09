@@ -4,7 +4,7 @@
 	</head>
 </html>
 	<?php $this->RenderBegin() ?>
-		<div class="title"><?php $this->lblName->Render(); ?></div>
+		<div class="title"><div class="info"><?php $this->lblName->Render(); ?></div></div>
 
 		<br/><br/><br/><br/>
 		

@@ -10,7 +10,7 @@
 		case 'test':
 		case 'stage':
 		case 'prod':
-			define ('__DOCROOT__', '/home/www/qcodo.release/wwwroot');
+			define ('__DOCROOT__', '/var/www/api.qcodo.com/wwwroot');
 			break;
 	}
 
@@ -25,7 +25,7 @@
 	 * Of course, you can also feel free to remove QApplication::CheckRemoteAdmin() call on any of these pages,
 	 * which will completely ignore ALLOW_REMOTE_ADMIN altogether.
 	 */
-	define('ALLOW_REMOTE_ADMIN', true);
+	define('ALLOW_REMOTE_ADMIN', false);
 
 
 

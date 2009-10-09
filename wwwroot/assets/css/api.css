@@ -1,8 +1,12 @@
 	/* Overall Styles */
 	BODY {margin: 0px;}
 	.edit_link {font: 11px verdana, arial, helvetica; color: white; background-color: #7744aa; font-weight: bold; position: absolute; top: 22px; left: 700px; cursor: pointer; padding: 2px 8px 2px 8px; border-width: 1px; border-color: black; border-style: solid;}
-	.page {margin: 0px; background-color: white; position: absolute; top: 110px; bottom: 0px; left: 0px; right: 0px;}
-	.title {background-color: #660066; font: 12px verdana, arial, helvetica; font-weight: bold; top: 0px; left: 0px; right: 0px; position: absolute; padding: 5px; height: 15px; color: #ffffff;}
+	.page {margin: 0px; background-color: white; }
+	.title { background: url(/images/logo.jpg) no-repeat; background-color: #444; border-bottom: 1px solid #333; height: 55px; }
+	div.title div.info { padding: 12px 20px 0 0; padding-left: 250px; font: 18px verdana, arial, helvetica; font-weight: bold; color: #ddd; float: right; text-align: right; }
+	div.title a { display: block; width: 400px; height: 55px; }
+	div.title div.info a { font-size: 11px; display: block; color: #999; font-weight: normal; }
+		div.title div.info a:hover { text-decoration: none; }
 	.subtitle {font: 14px verdana, arial, helvetica; font-weight: bold;}
 
 	/* Edit Screen */
@@ -27,7 +31,7 @@
 	.writebox_code { background-color: #ddddff; padding: 10px; margin-left: 20px; font-family: 'Lucida Console' 'Courier New' 'Courier' 'monospaced'; font-size: 11px; line-height: 13px; overflow: auto; width: auto;}
 
 	/* Main DocView Styles */
-	.doc {background-color: #ffffff; font: 12px verdana; bottom: 0px; left: 260px; right: 0px; top: 25px; position: absolute; padding: 0px;}
+	.doc {background-color: #ffffff; font: 12px verdana; bottom: 0px; left: 260px; right: 0px; top: 56px; position: absolute; padding: 0px;}
 
 	.class_info {background-color: #eeccff; padding: 10px; height: 65px;}
 	.class_name {font: 22px verdana, arial, helvetica; font-weight: bold;}
@@ -45,7 +49,7 @@
 	.class_tab_hover {background-color: #ffffcc; color: #888822; cursor: pointer;}
 
 	/* Treenav Specific Styles */
-	.treenav {background-color: #eeeeee; width: 240px; position: absolute; top: 25px; bottom: 0px; left: 0px; overflow: auto; padding: 10px; float:left;}
+	.treenav {background-color: #eeeeee; width: 240px; position: absolute; top: 56px; bottom: 0px; left: 0px; overflow: auto; padding: 10px; float:left;}
 	.treenav_item {font: 10px verdana; padding: 0px 2px 2px 2px; cursor: pointer;}
 	.treenav_item_selected {background-color: #eeccff;}
 	.treenav_item_hover {background-color: #ffffcc;}
