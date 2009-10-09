@@ -1,14 +1,14 @@
 /* SQLEditor (MySQL)*/
 
-DROP TABLE IF EXISTS `parameter`;
-
-DROP TABLE IF EXISTS `operation`;
-
 DROP TABLE IF EXISTS `qcodo_constant`;
 
 DROP TABLE IF EXISTS `class_property`;
 
 DROP TABLE IF EXISTS `class_variable`;
+
+DROP TABLE IF EXISTS `parameter`;
+
+DROP TABLE IF EXISTS `operation`;
 
 DROP TABLE IF EXISTS `variable`;
 
@@ -73,25 +73,6 @@ PRIMARY KEY (`id`)
 
 
 
-CREATE TABLE `variable_group`
-(
-`id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
-`name` VARCHAR(50),
-`order_number` INTEGER,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-
-
-CREATE TABLE `protection_type`
-(
-`id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
-`name` VARCHAR(50) NOT NULL UNIQUE,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-
-
 CREATE TABLE `qcodo_interface`
 (
 `id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
@@ -127,6 +108,16 @@ PRIMARY KEY (`id`)
 
 
 
+CREATE TABLE `variable_group`
+(
+`id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(50),
+`order_number` INTEGER,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+
+
 CREATE TABLE `variable`
 (
 `id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
@@ -144,34 +135,21 @@ PRIMARY KEY (`id`)
 
 
 
-CREATE TABLE `operation`
-(
-`id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
-`qcodo_class_id` INTEGER unsigned,
-`qcodo_interface_id` INTEGER unsigned,
-`name` VARCHAR(100),
-`protection_type_id` INTEGER unsigned,
-`static_flag` BOOLEAN,
-`abstract_flag` BOOLEAN,
-`final_flag` BOOLEAN,
-`return_variable_id` INTEGER unsigned,
-`additional_variable_id` INTEGER unsigned,
-`first_version` VARCHAR(40),
-`last_version` VARCHAR(40),
-`short_description` TEXT,
-`extended_description` TEXT,
-`file_id` INTEGER unsigned,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-
-
 CREATE TABLE `qcodo_constant`
 (
 `id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
 `qcodo_class_id` INTEGER unsigned,
 `variable_id` INTEGER unsigned  NOT NULL UNIQUE,
 `file_id` INTEGER unsigned,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+
+
+CREATE TABLE `protection_type`
+(
+`id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
+`name` VARCHAR(50) NOT NULL UNIQUE,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -200,6 +178,28 @@ CREATE TABLE `class_property`
 `class_variable_id` INTEGER unsigned,
 `read_only_flag` BOOLEAN,
 `write_only_flag` BOOLEAN,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+
+
+CREATE TABLE `operation`
+(
+`id` INTEGER unsigned  NOT NULL AUTO_INCREMENT,
+`qcodo_class_id` INTEGER unsigned,
+`qcodo_interface_id` INTEGER unsigned,
+`name` VARCHAR(100),
+`protection_type_id` INTEGER unsigned,
+`static_flag` BOOLEAN,
+`abstract_flag` BOOLEAN,
+`final_flag` BOOLEAN,
+`return_variable_id` INTEGER unsigned,
+`additional_variable_id` INTEGER unsigned,
+`first_version` VARCHAR(40),
+`last_version` VARCHAR(40),
+`short_description` TEXT,
+`extended_description` TEXT,
+`file_id` INTEGER unsigned,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
@@ -237,19 +237,6 @@ CREATE INDEX `variable_type_id_idx`  ON `variable`(`variable_type_id`);
 ALTER TABLE `variable` ADD FOREIGN KEY variable_type_id_idxfk(`variable_type_id`) REFERENCES `variable_type`(`id`);
 CREATE INDEX `variable_object_type_id_idx`  ON `variable`(`object_type_id`);
 ALTER TABLE `variable` ADD FOREIGN KEY object_type_id_idxfk(`object_type_id`) REFERENCES `qcodo_class`(`id`);
-CREATE INDEX `operation_qcodo_class_id_idx`  ON `operation`(`qcodo_class_id`);
-ALTER TABLE `operation` ADD FOREIGN KEY qcodo_class_id_idxfk(`qcodo_class_id`) REFERENCES `qcodo_class`(`id`);
-CREATE INDEX `operation_qcodo_interface_id_idx`  ON `operation`(`qcodo_interface_id`);
-ALTER TABLE `operation` ADD FOREIGN KEY qcodo_interface_id_idxfk(`qcodo_interface_id`) REFERENCES `qcodo_interface`(`id`);
-CREATE INDEX `operation_protection_type_id_idx`  ON `operation`(`protection_type_id`);
-ALTER TABLE `operation` ADD FOREIGN KEY protection_type_id_idxfk(`protection_type_id`) REFERENCES `protection_type`(`id`);
-CREATE INDEX `operation_return_variable_id_idx`  ON `operation`(`return_variable_id`);
-ALTER TABLE `operation` ADD FOREIGN KEY return_variable_id_idxfk(`return_variable_id`) REFERENCES `variable`(`id`);
-CREATE INDEX `operation_additional_variable_id_idx`  ON `operation`(`additional_variable_id`);
-ALTER TABLE `operation` ADD FOREIGN KEY additional_variable_id_idxfk(`additional_variable_id`) REFERENCES `variable`(`id`);
-CREATE INDEX `operation_file_id_idx`  ON `operation`(`file_id`);
-ALTER TABLE `operation` ADD FOREIGN KEY file_id_idxfk(`file_id`) REFERENCES `file`(`id`);
-CREATE UNIQUE INDEX `operation_idx` ON `operation` (`qcodo_class_id`,`qcodo_interface_id`,`name`);
 CREATE INDEX `qcodo_constant_qcodo_class_id_idx`  ON `qcodo_constant`(`qcodo_class_id`);
 ALTER TABLE `qcodo_constant` ADD FOREIGN KEY qcodo_class_id_idxfk(`qcodo_class_id`) REFERENCES `qcodo_class`(`id`);
 CREATE INDEX `qcodo_constant_variable_id_idx`  ON `qcodo_constant`(`variable_id`);
@@ -274,6 +261,19 @@ ALTER TABLE `class_property` ADD FOREIGN KEY variable_id_idxfk(`variable_id`) RE
 CREATE INDEX `class_property_class_variable_id_idx`  ON `class_property`(`class_variable_id`);
 ALTER TABLE `class_property` ADD FOREIGN KEY class_variable_id_idxfk(`class_variable_id`) REFERENCES `class_variable`(`id`);
 CREATE INDEX `class_property_idx` ON `class_property` (`qcodo_class_id`,`variable_group_id`);
+CREATE INDEX `operation_qcodo_class_id_idx`  ON `operation`(`qcodo_class_id`);
+ALTER TABLE `operation` ADD FOREIGN KEY qcodo_class_id_idxfk(`qcodo_class_id`) REFERENCES `qcodo_class`(`id`);
+CREATE INDEX `operation_qcodo_interface_id_idx`  ON `operation`(`qcodo_interface_id`);
+ALTER TABLE `operation` ADD FOREIGN KEY qcodo_interface_id_idxfk(`qcodo_interface_id`) REFERENCES `qcodo_interface`(`id`);
+CREATE INDEX `operation_protection_type_id_idx`  ON `operation`(`protection_type_id`);
+ALTER TABLE `operation` ADD FOREIGN KEY protection_type_id_idxfk(`protection_type_id`) REFERENCES `protection_type`(`id`);
+CREATE INDEX `operation_return_variable_id_idx`  ON `operation`(`return_variable_id`);
+ALTER TABLE `operation` ADD FOREIGN KEY return_variable_id_idxfk(`return_variable_id`) REFERENCES `variable`(`id`);
+CREATE INDEX `operation_additional_variable_id_idx`  ON `operation`(`additional_variable_id`);
+ALTER TABLE `operation` ADD FOREIGN KEY additional_variable_id_idxfk(`additional_variable_id`) REFERENCES `variable`(`id`);
+CREATE INDEX `operation_file_id_idx`  ON `operation`(`file_id`);
+ALTER TABLE `operation` ADD FOREIGN KEY file_id_idxfk(`file_id`) REFERENCES `file`(`id`);
+CREATE UNIQUE INDEX `operation_idx` ON `operation` (`qcodo_class_id`,`qcodo_interface_id`,`name`);
 CREATE INDEX `parameter_operation_id_idx`  ON `parameter`(`operation_id`);
 ALTER TABLE `parameter` ADD FOREIGN KEY operation_id_idxfk(`operation_id`) REFERENCES `operation`(`id`);
 CREATE INDEX `parameter_variable_id_idx`  ON `parameter`(`variable_id`);
