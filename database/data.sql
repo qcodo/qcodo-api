@@ -1,8 +1,3 @@
-ALTER TABLE file ADD UNIQUE KEY uq_file_1(directory_id, path);
-ALTER TABLE operation ADD UNIQUE KEY uq_operation_1(qcodo_class_id, qcodo_interface_id, name);
-ALTER TABLE class_property ADD INDEX ix_classproperty_1(qcodo_class_id, variable_group_id);
-ALTER TABLE class_variable ADD INDEX ix_classvariable_1(qcodo_class_id, variable_group_id);
-
 INSERT INTO protection_type(id, name) VALUES (1, 'Public');
 INSERT INTO protection_type(id, name) VALUES (2, 'Protected');
 INSERT INTO protection_type(id, name) VALUES (3, 'Private');
@@ -55,7 +50,4 @@ INSERT INTO directory_token(token, path, core_flag, relative_flag) VALUES ('__CS
 INSERT INTO directory_token(token, path, core_flag, relative_flag) VALUES ('__IMAGE_ASSETS__', 'wwwroot/assets/images/', false, true);
 INSERT INTO directory_token(token, path, core_flag, relative_flag) VALUES ('__PHP_ASSETS__', 'wwwroot/assets/php/', false, true);
 INSERT INTO directory_token(token, path, core_flag, relative_flag) VALUES ('__PANEL_DRAFTS__', 'wwwroot/panel_drafts/', false, true);
-
-INSERT INTO file(directory_id, path, deprecated_major_version, deprecated_minor_version, deprecated_build) VALUES (1, 'sample.php.inc', 0, 3, 11);
-INSERT INTO file(directory_id, path, deprecated_major_version, deprecated_minor_version, deprecated_build) VALUES (1, 'panel_drafts/index.tpl.php', 0, 3, 11);
-INSERT INTO file(directory_id, path, deprecated_major_version, deprecated_minor_version, deprecated_build) VALUES (1, 'panel_drafts/index.php', 0, 3, 11);
+INSERT INTO directory_token(token, path, core_flag, relative_flag) VALUES ('__DATA_META_CONTROLS__','wwwroot/includes/data_meta_controls/', false, false);
