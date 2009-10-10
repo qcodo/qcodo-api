@@ -5,12 +5,12 @@
 
 	switch (SERVER_INSTANCE) {
 		case 'dev':
-			define ('__DOCROOT__', '/var/www/qcodo-api/wwwroot');
+			define ('__DOCROOT__', '/var/www/qcodo-api/www');
 			break;
 		case 'test':
 		case 'stage':
 		case 'prod':
-			define ('__DOCROOT__', '/var/www/api.qcodo.com/wwwroot');
+			define ('__DOCROOT__', '/var/www/api.qcodo.com/www');
 			break;
 	}
 
@@ -88,7 +88,7 @@
 	 */
 
 	// General Includes (the location of the Prepend and Configuration includes files, and the Manifest XML)
-	define ('__INCLUDES__', __DOCROOT__ .  __SUBDIRECTORY__ . '/includes');
+	define ('__INCLUDES__', __DOCROOT__ .  __SUBDIRECTORY__ . '/../includes');
 
 	// The Qcodo Directories
 	// Includes subdirectories for Qcodo Customizations in CodeGen and QForms, i18n PO files, QCache storage, etc.

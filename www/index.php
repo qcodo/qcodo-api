@@ -3,7 +3,7 @@
 		Speed improvements on Server?!?!
 	*/
 
-	require('includes/prepend.inc.php');
+	require('../includes/prepend.inc.php');
 	require('ClassPanel.class.php');
 	require('MethodPanel.class.php');
 	require('PropertyPanel.class.php');

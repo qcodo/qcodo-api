@@ -1,5 +1,5 @@
 <?php
-	require('includes/prepend.inc.php');
+	require('../includes/prepend.inc.php');
 
 	class OperationEditFormBase extends QForm {
 		// General Form Variables
