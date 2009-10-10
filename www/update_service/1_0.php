@@ -1,5 +1,5 @@
 <?php
-	require('../includes/prepend.inc.php');
+	require('../../includes/prepend.inc.php');
 //	require('QBuildMaker.inc');
 
 	class UpdateService extends QSoapService {

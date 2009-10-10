@@ -14,7 +14,7 @@
 
 		protected $objDirectoryTokens;
 
-		const BuildRoot = '/home/qcodo_builds';
+		const BuildRoot = '/var/qcodo_builds';
 		const ManifestPath = '/wwwroot/includes/qcodo/_core/manifest.xml';
 		
 		public static function StripQuotes($strText) {
