@@ -70,7 +70,7 @@
 
 	// Constant for the DevTools (Command Line Interface) Directory
 	// (We're assuming it's at one level above __DOCROOT__... but feel free to specify any absolute path
-	define ('__DEVTOOLS_CLI__', __DOCROOT__ . __SUBDIRECTORY__ . '/../_devtools_cli');
+	define ('__DEVTOOLS_CLI__', __DOCROOT__ . __SUBDIRECTORY__ . '/../cli');
 
 
 

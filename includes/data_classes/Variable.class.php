@@ -27,7 +27,7 @@
 			return sprintf('Variable Object %s',  $this->intId);
 		}
 
-		public function CreateNewForName($strName, $strVersion) {
+		public static function CreateNewForName($strName, $strVersion) {
 			$objVariable = new Variable();
 			$objVariable->Name = $strName;
 			$objVariable->VariableTypeId = VariableType::Unknown;

@@ -15,8 +15,9 @@
 		protected $objDirectoryTokens;
 
 		const BuildRoot = '/var/qcodo_builds';
-		const ManifestPath = '/wwwroot/includes/qcodo/_core/manifest.xml';
-		
+		const ManifestPath = '/includes/qcodo/_core/manifest/manifest.xml';
+		const GitUrl = 'git://github.com/qcodo/qcodo.git';
+
 		public static function StripQuotes($strText) {
 			if (((QString::FirstCharacter($strText) == '"') && (QString::LastCharacter($strText)  == '"')) ||
 				((QString::FirstCharacter($strText) == "'") && (QString::LastCharacter($strText)  == "'"))) {
@@ -25,7 +26,7 @@
 
 			return $strText;
 		}
-		
+
 		public static function StripDollar($strText) {
 			if (QString::FirstCharacter($strText) == '$')
 				return substr($strText, 1);
@@ -57,21 +58,16 @@
 			if (file_exists($this->strTemp))
 				print shell_exec("rm -r -f $this->strTemp");
 
-			// Get the Latest Build
-			if (SERVER_INSTANCE == 'prod')
-				print shell_exec('cd ' . QBuildMaker::BuildRoot . '; cvs export -D "' . date('Y/m/d', time() + 24*60*60) . '" qcodo');
-			else
-				shell_exec('cd ' . QBuildMaker::BuildRoot . '; tar -xvf qcodo.tar');
+			// Get the Latest Build and Remove any GIT-related stuff
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '; git clone ' . QBuildMaker::GitUrl);
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f .git');
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f .gitignore');
 
 			// Move to Temp Location
 			rename(QBuildMaker::BuildRoot . '/qcodo', $this->strTemp);
 
-			// Remove .cvsignore
-			if (file_exists($this->strTemp . '/.cvsignore'))
-				unlink($this->strTemp . '/.cvsignore');
-
 			// Check/Validate Version Number
-			$strQcodoInc = file_get_contents($this->strTemp . '/wwwroot/includes/qcodo/_core/qcodo.inc.php');
+			$strQcodoInc = file_get_contents($this->strTemp . '/includes/qcodo/_core/qcodo.inc.php');
 			$strQcodoIncLines = explode("\n", $strQcodoInc);
 			$blnFound = false;
 			foreach ($strQcodoIncLines as $strLine) {
@@ -186,8 +182,10 @@
 						}
 					}
 
-					if (!$intDirectoryId)
+					if (!$intDirectoryId) {
+						var_dump($this->objDirectoryTokens);
 						exit("FATAL ERROR: No DirectoryToken resolution for " . $strFile . "\r\n");
+					}
 
 					$objFile = File::LoadByDirectoryIdPath($intDirectoryId, $strFile);
 					if (!$objFile) {

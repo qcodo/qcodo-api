@@ -1,0 +1,20 @@
+UPDATE directory_token SET path='www/' WHERE token='__DOCROOT__';
+UPDATE directory_token SET path='cli/' WHERE token='__DEVTOOLS_CLI__';
+UPDATE directory_token SET path='includes/' WHERE token='__INCLUDES__';
+UPDATE directory_token SET path='includes/qcodo/' WHERE token='__QCODO__';
+UPDATE directory_token SET path='includes/qcodo/_core/' WHERE token='__QCODO_CORE__';
+UPDATE directory_token SET path='includes/data_classes/' WHERE token='__DATA_CLASSES__';
+UPDATE directory_token SET path='includes/data_classes/generated/' WHERE token='__DATAGEN_CLASSES__';
+UPDATE directory_token SET path='includes/formbase_classes_generated/' WHERE token='__FORMBASE_CLASSES__';
+UPDATE directory_token SET path='includes/panelbase_classes_generated/' WHERE token='__PANELBASE_CLASSES__';
+UPDATE directory_token SET path='www/_devtools/' WHERE token='__DEVTOOLS__';
+UPDATE directory_token SET path='www/drafts/' WHERE token='__FORM_DRAFTS__';
+UPDATE directory_token SET path='www/examples/' WHERE token='__EXAMPLES__';
+UPDATE directory_token SET path='www/assets/js/' WHERE token='__JS_ASSETS__';
+UPDATE directory_token SET path='www/assets/css/' WHERE token='__CSS_ASSETS__';
+UPDATE directory_token SET path='www/assets/images/' WHERE token='__IMAGE_ASSETS__';
+UPDATE directory_token SET path='www/assets/php/' WHERE token='__PHP_ASSETS__';
+UPDATE directory_token SET path='www/drafts/dashboard/' WHERE token='__PANEL_DRAFTS__';
+UPDATE directory_token SET path='includes/data_meta_controls/' WHERE token='__DATA_META_CONTROLS__';
+
+INSERT INTO directory_token VALUES(19, '__DATAGEN_META_CONTROLS__', 'includes/data_meta_controls/generated/', 0, 0);
