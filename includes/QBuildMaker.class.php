@@ -203,7 +203,7 @@
 					$this->strXml .= sprintf("<file directoryToken=\"%s\" path=\"%s\" md5=\"%s\"/>\r\n",
 						$objFileDirectory->Token, $strFile, $strMd5);
 
-					if (substr($strFile, strlen($strFile) - 4) == '.php') {
+					if ((substr($strFile, strlen($strFile) - 4) == '.php') && (strpos($strFullPath, '/assets/') === false)) {
 						switch ($objFileDirectory->Token) {
 							case '__INCLUDES__':
 							case '__QCODO__':
