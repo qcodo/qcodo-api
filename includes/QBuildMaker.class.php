@@ -63,6 +63,12 @@
 			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f .git');
 			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f .gitignore');
 
+			// Remove any Examples-related stuff
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f www/examples');
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f includes/examples');
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f www/assets/images/examples');
+			print shell_exec('cd ' . QBuildMaker::BuildRoot . '/qcodo; rm -r -f www/assets/css/examples');
+
 			// Move to Temp Location
 			rename(QBuildMaker::BuildRoot . '/qcodo', $this->strTemp);
 
