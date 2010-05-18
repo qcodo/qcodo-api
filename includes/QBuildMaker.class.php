@@ -145,7 +145,7 @@
 			$strFolderArray = array();
 
 			// Iterate through all subfolders and files in this folder
-			// Be sure not to process anything with CVS, or ds_store
+			// Be sure not to process anything with CVS, SVN or ds_store
 			$objDirectory = opendir($strFolder);
 			while ($strName = readdir($objDirectory))
 				if (($strName != '.') && ($strName != '..') &&
@@ -209,7 +209,10 @@
 					$this->strXml .= sprintf("<file directoryToken=\"%s\" path=\"%s\" md5=\"%s\"/>\r\n",
 						$objFileDirectory->Token, $strFile, $strMd5);
 
-					if ((substr($strFile, strlen($strFile) - 4) == '.php') && (strpos($strFullPath, '/assets/') === false)) {
+					// Parse tokens for documetation for all PHP files outside of assets and PHPUnit
+					if ((substr($strFile, strlen($strFile) - 4) == '.php') &&
+						(strpos($strFullPath, '/assets/') === false) &&
+						(strpos($strFullPath, '/PHPUnit/') === false)) {
 						switch ($objFileDirectory->Token) {
 							case '__INCLUDES__':
 							case '__QCODO__':
