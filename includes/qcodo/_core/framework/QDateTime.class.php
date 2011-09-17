@@ -223,7 +223,9 @@
 		 * @param string $strFormat the format of the date
 		 * @return string the formatted date as a string
 		 */
-		public function __toString($strFormat = null) {
+		public function __toString() {
+			$strFormat = null;
+			if (count($args = func_get_args())) $strFormat = $args[0];
 			if (is_null($strFormat))
 				$strFormat = QDateTime::$DefaultFormat;
 
